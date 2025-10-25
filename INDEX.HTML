@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <link rel="shortcut icon" type="image/x-icon" href="https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/717f280bed475230e0023ddf508c79d1~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=14579&refresh_token=39912cc2&x-expires=1760698800&x-signature=887Ir%2BPwB7dsCJR7%2BVVaZQU%2FM4Q%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=my2" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הרכב ריאל מדריד: הבלנאקוס</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+/* --- CORE DESIGN PRINCIPLES & COLORS (Per Design Guidelines) --- */
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Roboto', sans-serif; }
+
+/* Background: 12 13 27 (deep space navy) */
+body {
+    background-color: #0c0d1b; /* 12 13 27 */
+    color: #f0f0f0; /* Text Primary: 240 9% 94% */
+    min-height: 100vh; 
+    display: flex; flex-direction: column; align-items: center; 
+    position: relative; overflow-x: hidden; 
+}
+
+.footer-copyright {
+    width: 100%;
+    background-color: #0c0d1b; /* צבע רקע כהה */
+    padding: 15px 0;
+    text-align: center;
+    color: #999; /* צבע טקסט אפור בהיר */
+    font-size: 0.9em;
+    border-top: 1px solid #1e3a8a; /* קו הפרדה עדין */
+    margin-top: auto; 
+    position: relative;
+    z-index: 10;
+}
+.footer-copyright p {
+    margin: 0;
+}
+
+
+/* Stadium Atmosphere Effect (Stronger) */
+body::before {
+    content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at center 20%, rgba(118, 137, 243, 0.6), rgba(12, 13, 27, 1) 80%); 
+    z-index: -2; 
+}
+/* Crest Watermark */
+body::after {
+    content: ''; position: fixed; top: 0; left: -250px; width: 100%; height: 100%;
+    background-image: url('https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Real_Madrid_CF.svg/1200px-Real_Madrid_CF.svg.png'); 
+    background-size: 30% auto; background-position: center 10%; background-repeat: no-repeat; 
+    opacity: 0.05; filter: grayscale(10%) brightness(100%); z-index: -1; 
+}
+
+/* Header */
+.header {
+    text-align: center; padding: 20px 0; background: rgba(16, 16, 27, 0.95); width: 100%;
+    border-bottom: 4px solid #ffffff; /* Royal Gold accent */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.9); /* Depth shadows */
+    position: relative; z-index: 20;
+}
+.header .logo { width: 40px; margin-bottom: 10px; filter: drop-shadow(0 0 15px rgba(245, 244, 242, 0.8)); }
+/* Hero Title: 3.5rem, 900, letter-spacing 3px, gold glow */
+h1 { 
+    font-size: 2em; color: #fff; letter-spacing: 3px; font-weight: 900;
+    text-shadow: 0 0 20px rgba(255, 254, 249, 0.8); 
+}
+
+/* Panels & Containers: Surface 37 38 64 */
+.formation-control, .sidebar-widget, .bench-container-wrapper {
+    width: 95%; max-width: 2000px; 
+    background: rgba(37, 38, 64, 0.9); /* Surface 37 38 64 */
+    padding: 20px 30px; border-radius: 12px; /* Border radius: 12px */
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.9); /* Depth shadows */
+    margin-top: 30px; margin-bottom: 30px;
+    border: 1px solid #4a4e69; /* Border: 237 14% 35% */
+    position: relative; z-index: 10;
+}
+/* For sidebar widgets that sit in the flex row */
+.sidebar-widget {
+    width: 500px;
+    height: fit-content;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0; /* Widget controls internal padding */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Section Headers: 1.6-1.8rem, weight 900 */
+.bench-container-wrapper h2 {
+    font-size: 1.2em;
+    font-weight: 300;
+}
+
+/* Formation Buttons */
+.formation-control button {
+    /* Real Blue Gradient */
+    background: linear-gradient(145deg, #1e3a8a, #0c235a); 
+    color: #fff; border: none; border-radius: 8px;
+    padding: 10px 15px; font-weight: 700; cursor: pointer; transition: background 0.3s, transform 0.1s;
+}
+/* Active State: Gold Background */
+.formation-control button.active { 
+    background: #ffffff; 
+    color: #0c0d1b; 
+    box-shadow: 0 0 10px #fffffe;
+}
+#re-run-animation { 
+    /* Alert Red */
+    background: linear-gradient(145deg, #ff6b6b, #e03b3b); 
+}
+.formation-control { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: center; }
+
+/* --- MAIN LAYOUT (3-Column: Table | Pitch | Scoreboard) --- */
+/* PITCH EXPANSION: The pitch will now automatically take up the extra space from the removed sidebar due to flex-grow: 1 */
+.main-content-wrapper {
+    display: flex; justify-content: center; width: 100%; max-width: 2500px; gap: 20px; 
+    margin-bottom: 30px; position: relative; z-index: 10;
+}
+
+/* Pitch */
+.pitch-container { 
+    flex-grow: 1; /* This makes the pitch expand to fill the available space */
+    max-width: 2200px; 
+}
+.pitch {
+    /* תמונת מגרש כדורגל ירוקה */
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Soccer_field_-_empty.svg/1024px-Soccer_field_-_empty.svg.png'); 
+    background-size: cover; background-position: center; border-radius: 15px; 
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.8); padding: 20px;
+    min-height: 900px; display: flex; flex-direction: column; justify-content: space-between;
+    border: 4px solid #ffffff; /* Royal Gold Border */
+}
+.player-row-container {
+    display: flex; justify-content: space-around;
+    flex-direction: row-reverse; /* RTL Support */
+    padding: 10px 0;
+}
+
+/* Table Widget (Right Column - Now Combined Widget) */
+.table-widget {
+    border: 1px solid #fdfdfd; /* Gold Border */
+}
+.table-widget .widget-header {
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(8, 8, 8, 0.5); 
+    padding: 15px 20px;
+    border-bottom: 2px solid #fcfcfc;
+    text-align: center;
+    background: rgba(16, 16, 27, 0.9);
+    border-radius: 10px 20px 0 0;
+    font-size: 1.6em; font-weight: 900;
+}
+
+/* --- FIX for Table Widget Visibility --- */
+.table-content {
+    padding: 20px;
+    border-radius: 0 0 10px 10px;
+}
+.table-content.hidden {
+    display: none; /* KEY: Hide the content when inactive */
+}
+.table-content.active {
+    display: block; /* KEY: Show the content when active */
+}
+/* --- END FIX --- */
+
+/* 365Scores Widget Specific Styling */
+.sidebar-widget #powered-by {
+    font-size: 0.8em;
+    color: #999;
+    padding: 10px;
+    text-align: center;
+    border-top: 1px solid #252640; /* Subtle separator */
+}
+.sidebar-widget #powered-by-link {
+    color: #58a6ff;
+    text-decoration: none;
+}
+
+
+/* --- START PLAYER CARD REDESIGN (UI/UX) - PITCH CARDS --- */
+
+/* **שינוי חדש: הגדרת אנימציה יפה יותר** */
+@keyframes fadeInPop {
+    0% { opacity: 0; transform: scale(0.5) translateY(50px); }
+    80% { opacity: 1; transform: scale(1.05) translateY(0); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+/* Slot size adjusted for new card size */
+.player-row-slot {
+    width: 150px; /* WIDER SLOT */
+    height: 180px; /* TALLER SLOT - Increased for larger image */
+    position: relative; 
+    display: flex; /* Ensure card is centered */
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease-in-out; /* Add transition for smoothness */
+}
+/* Player Cards (Pitch) - Transparent Look */
+.player-card {
+    background-color: transparent; 
+    border: none;
+    border-radius: 0; 
+    padding: 5px; 
+    width: 100%; /* Take full width of the slot */
+    height: 100%;
+    display: flex; 
+    flex-direction: column; /* Stack image and name */
+    justify-content: center; 
+    align-items: center;
+    cursor: grab; 
+    transition: transform 0.3s, box-shadow 0.3s, opacity 0.2s; /* **שינוי: הוספת opacity ל-transition** */
+    position: relative;
+    font-size: 0.8em; 
+    font-weight: 700; 
+    text-align: center;
+    color: #fff; 
+    text-shadow: 0 0 5px #000; 
+    user-select: none;
+    -webkit-user-drag: none;
+    touch-action: none; 
+}
+
+/* **שינוי חדש: הפעלת האנימציה** */
+.player-card.animate-in {
+    /* Keyframes for a smooth pop-in */
+    animation: fadeInPop 0.65s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+}
+
+/* **חדש: מחלקת דעיכה למעבר בין הרכבים** */
+.player-card.fade-out {
+    opacity: 0 !important;
+    transform: scale(0.8) translateY(-20px) !important; /* Move it slightly up/scale down while fading */
+}
+
+/* Image Size and Circularity */
+.player-card img { 
+    width: 120px; /* LARGER IMAGE - Increased from 100px to 120px */
+    height: 120px; /* LARGER IMAGE - Increased from 100px to 120px */
+    border-radius: 50%; 
+    border: 3px solid #ffffff; /* Gold Border for avatar */
+    object-fit: cover;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7); 
+}
+
+/* Hover Effect Adjustment (Stronger glow) */
+.player-card:hover {
+    box-shadow: 0 0 25px rgb(255, 255, 255), 0 4px 15px rgba(88,166,255,0.5); 
+    transform: scale(1.1); 
+    z-index: 2;
+}
+
+/* Empty Slot */
+.player-row-slot.empty-slot { 
+    background-color: rgba(18, 19, 40, 0.4); 
+    border: 1px dashed #4a4e69; 
+    display: flex; justify-content: center; align-items: center;
+}
+
+/* New style for the content inside the empty slot */
+.player-card.empty-slot-content {
+    background-color: rgba(18, 19, 40, 0.8);
+    border-radius: 8px;
+    height: 80%;
+    color: #ffd700;
+    text-shadow: none;
+    font-weight: 900;
+    padding: 10px;
+    width: 90%;
+    /* Reset properties for the empty card placeholder */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: default;
+    transform: none;
+    box-shadow: none;
+}
+/* --- END PITCH CARD REDESIGN --- */
+
+/* --- START PLAYER CARD REDESIGN (UI/UX) - BENCH/INJURY CARDS --- */
+.player-list-item-content {
+    /* SHRUNK SIZE - Same size for both bench and injured */
+    width: 120px; /* SHRUNK from 120px */
+    height: 120px; /* SHRUNK from 140px */
+    padding: 5px; /* Reduced padding */
+    
+    /* REMOVED BOX LOOK - Now transparent and borderless */
+    background-color: transparent; 
+    border: none; 
+    border-radius: 0; 
+    
+    display: flex; 
+    flex-direction: column; 
+    justify-content: flex-start; 
+    align-items: center;
+    cursor: grab; 
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    font-size: 0.7em; /* Slightly smaller text */
+    font-weight: 700; 
+    text-align: center;
+    color: #fff; 
+    text-shadow: 0 0 2px #000; 
+    user-select: none;
+    -webkit-user-drag: none;
+    touch-action: none; 
+}
+/* --- ADD PLAYER FORM (MODAL) --- */
+/* ... (סביב שורה 294) */
+#add-player-form {
+    /* Overlay 26 26 46 */
+    background: #1a1a2e; /* Dark backgrounds (#1a1a2e) */
+    border: 4px solid #ffd700; /* gold borders */
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.5); /* gold glow */
+    z-index: 100;
+    position: fixed; /* ensure fixed to viewport */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* center */
+    width: 400px;
+    display: none; /* hidden by default */
+}
+#add-player-form.visible { display: block; }
+/* ... */
+.player-list-item-content img {
+    width: 90px; /* SHRUNK from 80px */
+    height: 90px; /* SHRUNK from 80px */
+    border-radius: 50%;
+    border: 2px solid #fff; /* White border for contrast */
+    object-fit: cover;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Reduced shadow */
+    margin-bottom: 3px; /* Reduced margin */
+}
+
+.player-list-item-content:hover {
+    transform: scale(1.05); /* Increased scale for list items */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); /* White glow for list item hover */
+}
+
+/* Ensure name text flows correctly below the image */
+.player-list-item-content span {
+    flex-grow: 0; 
+    text-align: center;
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-shadow: none; 
+    line-height: 1.2;
+    height: 1.2em; /* Ensure single line name */
+}
+
+/* Injured Status Variant - Now subtle, only border and light background */
+.player-list-item-content.injured { 
+    background-color: rgba(90, 44, 44, 0.2); /* Subtle red tones transparent */
+    border: 1px solid #ff3b3b; /* Alert Red border */
+    border-radius: 8px; /* Slight radius to contain the red color */
+}
+
+/* --- END BENCH/INJURY CARD REDESIGN --- */
+
+
+/* --- BENCH & INJURY ROW (Full Width) --- */
+.bench-container-wrapper { 
+    border: 1px solid #58a6ff; /* Sky Blue Border */
+    display: flex; /* Flex to hold injury list and bench list */
+    gap: 20px;
+    padding: 20px 10px; /* Adjusted padding for better internal spacing */
+}
+
+/* Injury List (Top section, now full width) */
+/* Injury List (Left side of Bench row) - DYNAMIC WIDTH BASED ON CONTENT */
+/* Injury List (Right side in RTL) - **DYNAMIC WIDTH BASED ON CONTENT** */
+.injury-list-wrapper {
+    flex-basis: auto; 
+    width: fit-content; /* **הליבה: מתאים את הרוחב לתוכן המקסימלי** */
+    flex-grow: 0; /* **מונע גדילה מעבר לנדרש** */
+    flex-shrink: 0; /* ודא שלא מתכווץ מתחת לרוחב הנדרש */
+    
+    /* התיקון: מעביר את הגבול לצד ימין (RTL) ומצמצם רוחב מינימלי */
+    border-right: 2px solid #ff3b3b; /* **FIX: גבול מימין במקום משמאל** */
+    padding-right: 15px; /* מרווח מימין (בתוך הקונטיינר) */
+    padding-left: 15px; /* מרווח משמאל (ליד הגבול) */
+    min-width: 100px; /* **FIX: צמצום הרוחב המינימלי למנוע רווח גדול** */
+}
+.injury-header h2 {
+    color: #ff3b3b;
+    text-shadow: 0 0 10px rgba(255, 59, 59, 0.5);
+    font-size: 1.4em;
+}
+/* Injury list horizontal wrap */
+/* Changed from UL to DIV in HTML for consistent Flexbox behavior */
+#injury-list-container {
+    padding: 10px 0;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* min-width: 250px; הוסר כדי להשתמש ברוחב ה-wrapper הדינמי */
+}
+#injury-list-container.drag-over-active {
+    background-color: rgba(255, 59, 59, 0.1);
+    border: 3px dashed #ff3b3b !important;
+}
+
+
+/* Bench List (Bottom section, takes remaining space, full width) */
+.bench-list-wrapper {
+    flex-grow: 1; /* **ודא שהספסל לוקח את כל הרוחב הנותר** */
+    min-width: 0; /* Important for flex to handle overflow properly */
+}
+.bench-header {
+    border-bottom: 2px solid #58a6ff; padding-bottom: 10px; display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 10px;
+}
+.bench-list-wrapper h2 { 
+    color: #58a6ff; 
+    text-shadow: 0 0 10px rgba(88, 166, 255, 0.5); 
+    font-size: 1.4em;
+}
+
+/* --- NEW CSS FOR FLEX-WRAPPING BENCH --- */
+#bench-list-container {
+    padding: 10px 0;
+    min-height: 10px;
+    position: relative;
+    
+    display: flex; 
+    flex-wrap: wrap; /* Key for horizontal and wrapping */
+    gap: 20px; 
+    overflow-x: hidden; 
+}
+
+
+/* Action Buttons: Add (Success Green) & Delete (Alert Red) */
+.add-btn {
+    /* Success Green Gradient */
+    background: linear-gradient(145deg, #4fff3b, #308022); 
+    color: #10101b; border: none; border-radius: 50%;
+    width: 35px; height: 35px; font-size: 20px; line-height: 1;
+    cursor: pointer; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s, box-shadow 0.2s; font-weight: 700;
+}
+.delete-btn {
+    /* Alert Red Gradient */
+    background: linear-gradient(145deg, #ff3b3b, #c92f2f);
+    color: #fff; border: none; border-radius: 50%;
+    width: 25px; height: 25px; font-size: 14px;
+    position: absolute; top: 3px; right: 3px; z-index: 5; /* Adjusted position for smaller card */
+    cursor: pointer; transition: transform 0.2s;
+}
+
+/* Re-position the delete button for the new compact layout */
+.player-list-item-content .delete-btn {
+    position: absolute; 
+    top: 3px;
+    right: 3px;
+    width: 20px; /* Slightly smaller button */
+    height: 20px;
+    font-size: 12px;
+    flex-shrink: 0;
+}
+/* ... rest of the CSS and HTML structure remain the same ... */
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    
+    /* 1. הופכים את ה-body ל-Flexbox כדי לשלוט בסדר ההצגה של הקונטיינרים הראשיים */
+    body { 
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; 
+        min-height: auto; 
+    }
+    
+    /* 2. הגדרת סדר חדש של הילדים הישירים של ה-BODY */
+    .header { order: 1; margin: 0; }
+    .formation-control { order: 2; margin: 20px 0; } 
+    /* **הספסל/פצועים יעלו למעלה** */
+    .bench-container-wrapper { order: 3; width: 95%; margin: 20px 0; } 
+    /* הקונטיינר הראשי (מגרש+ווידג'טים) יבוא אחרון */
+    .main-content-wrapper { order: 4; margin-top: 20px; margin-bottom: 20px; flex-direction: column; align-items: center; gap: 10px; } 
+
+    
+    /* 3. סידור פנימי של main-content-wrapper (עמודה) */
+    .main-content-wrapper { flex-direction: column; align-items: center; }
+
+    /* 4. סידור פנימי של ה-main-content-wrapper: מגרש -> טבלה/תוצאות */
+    .pitch-container { order: 1; width: 95%; max-width: 100%; } /* המגרש יעלה למעלה בתוך הקונטיינר */
+    .table-widget { order: 2; z-index: 1; position: relative; width: 95%; max-width: 100%; } /* טבלה/תוצאות */
+
+    
+    /* 5. שאר ההגדרות הרספונסיביות הקודמות */
+    .sidebar-widget { 
+        /* מכריח רוחב מלא בתוך ה-main-content-wrapper*/
+        width: 100%; 
+        max-width: none; 
+        margin-bottom: 20px; 
+        padding: 0;
+    }
+    
+    /* ***התיקון לרווח הענק*** */
+    .pitch {
+        min-height: 600px; /* הפחתה משמעותית של הגובה המינימלי לשיפור פריסת המובייל */
+        padding: 10px; /* הפחתת ריפוד המגרש */
+    }
+    
+    .player-row-slot { 
+        width: 100px; 
+        height: 120px; /* Increased mobile slot height to prevent name overflow with larger images */
+    } /* כרטיסי שחקנים קטנים יותר */
+    
+    .player-card img { /* FIX: Shrink images for mobile view */
+        width: 80px; 
+        height: 80px; 
+    }
+    
+    .player-card { /* Shrink text for mobile */
+        font-size: 0.7em;
+    }
+    
+    h1 { font-size: 2em; }
+    
+    /* שינוי פריסת הספסל והפצועים לעמודה אחת - **כולל תיקון רוחב פצועים** */
+    .bench-container-wrapper { flex-direction: column; }
+    .injury-list-wrapper { 
+        flex-basis: auto; 
+        flex-grow: 1; /* לקיחת רוחב מלא במובייל */
+        border-right: none; /* הסרת הגבול במובייל */
+        padding-left: 0; 
+        padding-right: 0; 
+        /* **התיקון הקריטי** - ודא שאין גלילה מיותרת */
+        width: 100%; 
+        min-width: 0;
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+    
+    /* ודא שגם כרטיס הספסל לוקח רוחב מלא */
+    .bench-list-wrapper {
+         width: 100%;
+         min-width: 0;
+         max-width: 100%;
+    }
+    
+    /* התאמת קונטיינר הטבלה לרוחב מלא במובייל */
+    .table-widget { 
+        width: 95%; 
+        max-width: 600px; /* מגביל רוחב מקסימלי גם בטאבלטים */
+        margin: 20px auto; 
+    }
+    
+    /* התאמת גודל ה-h1 */
+    .header h1 {
+        font-size: 2em;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Real_Madrid_CF.svg/1200px-Real_Madrid_CF.svg.png" alt="סמל ריאל מדריד" class="logo" aria-label="סמל ריאל מדריד">
+    <h1>הרכב ריאל מדריד: הבלאנקוס</h1>
+</div>
+
+<div class="formation-control" id="formation-control-buttons">
+    <label>בחר מערך:</label>
+    <button data-formation="4-3-3" class="active" aria-label="בחר מערך 4-3-3">4-3-3</button>
+    <button data-formation="4-4-2" aria-label="בחר מערך 4-4-2">4-4-2</button>
+    <button data-formation="4-2-3-1" aria-label="בחר מערך 4-2-3-1">4-2-3-1</button>
+    <button data-formation="3-5-2" aria-label="בחר מערך 3-5-2">3-5-2</button>
+    <button data-formation="4-1-2-1-2" aria-aria-label="בחר מערך 4-1-2-1-2">4-1-2-1-2</button>
+    <button data-formation="3-4-3" aria-aria-label="בחר מערך 3-4-3">3-4-3</button>
+    <button data-formation="5-3-2" aria-aria-label="בחר מערך 5-3-2">5-3-2</button>
+    <button id="re-run-animation" aria-label="הפעל אנימציה מחדש">הצג הרכב (אנימציה)</button> 
+</div>
+
+    
+<div class="bench-container-wrapper">
+    <div class="injury-list-wrapper" id="injury-list-wrapper">
+        <div class="injury-header">
+              <h2>פצועים / מושעים</h2>
+              <button class="add-btn" id="add-injured-btn" aria-label="הוסף שחקן פצוע">+</button>
+        </div>
+        <div id="injury-list-container" ondragover="handleDragOver(event)" ondragenter="handleDragEnter(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event)">
+        </div>
+    </div>
+
+    <div class="bench-list-wrapper">
+        <div class="bench-header">
+            <h2>שחקני ספסל וזמינים</h2>
+            <button class="add-btn" id="add-bench-btn" aria-label="הוסף שחקן לספסל">+</button>
+        </div>
+
+        <div id="bench-list-container" 
+            ondragover="handleDragOver(event)" 
+            ondragenter="handleDragEnter(event)" 
+            ondragleave="handleDragLeave(event)" 
+            ondrop="handleDrop(event)">
+            </div>
+    </div>
+</div>
+
+<div class="main-content-wrapper">
+    
+    <div class="sidebar-widget table-widget" id="table-sidebar">
+        <div class="widget-header">
+            <span id="current-table-title">טבלת הקבוצה / תוצאות ומשחקים</span>
+            <div id="table-switch-buttons" style="margin-top: 10px; display: flex; justify-content: center; gap: 10px;">
+                <button data-table-id="team" class="switch-table-btn active" style="background: linear-gradient(145deg, #ffffff, #ffffff); color: #10101b; border: 2px solid #fff; border-radius: 6px; padding: 8px 12px; font-weight: 700; cursor: pointer;">לה ליגה</button>
+                <button data-table-id="league" class="switch-table-btn" style="background: linear-gradient(145deg, #1e3a8a, #0c235a); color: #fff; border: none; border-radius: 6px; padding: 8px 12px; font-weight: 700; cursor: pointer;">ליגת האלופות</button>
+                <button data-table-id="scores" class="switch-table-btn" style="background: linear-gradient(145deg, #1e3a8a, #0c235a); color: #fff; border: none; border-radius: 6px; padding: 8px 12px; font-weight: 700; cursor: pointer;">לוח תוצאות</button>
+            </div>
+        </div>
+        
+        <div id="table-widgets-container">
+            <div id="team-standings-widget" class="table-content active" data-title="טבלת לה ליגה">
+                <div data-widget-type="entityStandings" data-entity-type="league" data-entity-id="11" data-lang="he-il" data-widget-id="cce9e5af-0477-464c-80cd-4b436fefea98" data-limit-height-display="800" data-use-scrolling-buttons="true" data-theme="dark"></div>
+            </div>
+            <div id="league-standings-widget" class="table-content hidden" data-title="טבלת ליגת האלופות">
+                <div data-widget-type="entityStandings" data-entity-type="league" data-entity-id="572" data-lang="he-il" data-widget-id="825dda98-197d-4187-ac89-4d98ac74ceab" data-limit-height-display="800" data-use-scrolling-buttons="true" data-theme="dark"></div>
+            </div>
+            <div id="scores-widget" class="table-content hidden" data-title="לוח תוצאות ומשחקים">
+                <div data-widget-type="entityScores" data-entity-type="team" data-entity-id="131" data-lang="he-il" data-widget-id="406f2d5e-569a-4021-bac9-e9dc00c4a883" data-limit-height-display="800" data-theme="dark"></div>
+            </div>
+        </div>
+    </div>
+
+   <div class="pitch-container">
+    <div class="pitch" id="pitch-area">
+        <div class="player-row-container" id="row-1"></div> 
+        <div class="player-row-container" id="row-2"></div> 
+        <div class="player-row-container" id="row-3"></div> 
+        <div class="player-row-container" id="row-4"></div> 
+        <div class="player-row-container" id="row-5"></div>
+        <div class="player-row-container" id="row-6"></div>
+    </div>
+</div>
+    
+    </div>
+
+<script src="https://widgets.365scores.com/main.js" defer></script>
+    
+<div class="modal-overlay" id="modal-overlay">
+    <div id="add-player-form">
+        <h3>הוספת שחקן חדש</h3>
+        <form id="new-player-form">
+            <label for="playerName">שם מלא:</label>
+            <input type="text" id="playerName" required>
+
+            <label for="playerPos">תפקיד:</label>
+            <select id="playerPos" required>
+                <option value="GK">שוער (GK)</option>
+                <option value="DEF">הגנה (DEF)</option>
+                <option value="MID">קישור (MID)</option>
+                <option value="FWD">התקפה (FWD)</option>
+                <option value="MID DEF">קשר/מגן (MID/DEF)</option>
+            </select>
+
+            <label for="playerImg">קישור לתמונה (URL):</label>
+            <input type="url" id="playerImg" value="images/players/new_player.jpg">
+            
+            <input type="hidden" id="targetStatus" value="bench">
+            <input type="hidden" id="targetRow" value="0">
+            <input type="hidden" id="targetSlot" value="-1">
+
+            <div class="button-group">
+                <button type="button" class="cancel" id="cancel-add-player-btn">בטל</button>
+                <button type="submit" class="submit">הוסף שחקן לקבוצה</button>
+            </div>
+        </form>
+    </div>
+</div>
+    
+<footer class="footer-copyright">
+    <p>&copy; 2025 כל הזכויות שמורות לאבירם וניר.</p>
+</footer>
+    
+<script>
+// --- GLOBAL DATA & MAPPING ---
+const ROW_TO_POSITION = { 
+    1: "GK", 
+    2: "DEF", 
+    3: "MID", // Midfield Row 1 (often deeper)
+    4: "MID", // Midfield Row 2 (often box-to-box or AM)
+    5: "FWD MID", 
+    6: "FWD" 
+}; 
+const FORMATIONS = { 
+    "4-3-3": { 1: 1, 2: 4, 3: 3, 6: 3 }, 
+    "4-4-2": { 1: 1, 2: 4, 3: 4, 6: 2 }, 
+    "4-2-3-1": { 1: 1, 2: 4, 3: 2, 4: 3, 6: 1 }, 
+    "3-5-2": { 1: 1, 2: 3, 3: 5, 6: 2 }, // Row 3 is the 5-man midfield
+    "4-1-2-1-2": { 1: 1, 2: 4, 3: 1, 4: 2, 5: 1, 6: 2}, 
+    "3-4-3": { 1: 1, 2: 3, 3: 4, 6: 3 }, // Row 3 is the 4-man midfield
+    "5-3-2": {1:1,2:5,3:3,6:2}, // Row 3 is the 3-man midfield
+}; 
+
+// **שינוי:** שמירת שם המערך הנוכחי גלובלית לצורך לוגיקת התאימות
+let currentFormationName = "4-3-3";
+let currentFormation = FORMATIONS[currentFormationName]; 
+let nextPlayerId = 30; 
+
+// Position Groups for the Bench (used for sorting)
+const POSITION_GROUPS = { 
+    "GK": { name: "שוערים (GK)", groupKey: "GK", order: 1 }, 
+    "DEF": { name: "מגנים (DEF)", groupKey: "DEF", order: 2 }, 
+    "MID": { name: "קשרים (CM)", groupKey: "MID", order: 3 }, 
+    "FWD MID": { name: "קשרים התקפיים (AM)", groupKey: "MID", order: 3 }, 
+    "MID DEF": { name: "קשרים אחוריים (DM)", groupKey: "MID", order: 3 }, 
+    "FWD": { name: "חלוצים (FWD)", groupKey: "FWD", order: 4 }, 
+    "Other": { name: "אחרים", groupKey: "Other", order: 5 } 
+}; 
+
+// **מערך השחקנים הראשי - מקור האמת**
+const BASE_PLAYERS = [ 
+    { id: 1, name: "Thibaut Courtois", img: "images/players/courtois.jpg", position: "GK", row: 1, slotIndex: 0, status: 'starter' }, 
+    { id: 2, name: "Carvajal", img: "images/players/carvajal.jpg", position: "DEF", row: 2, slotIndex: 3, status: 'bench' }, 
+    { id: 3, name: "Militao", img: "images/players/militao.jpg", position: "DEF", row: 2, slotIndex: 2, status: 'starter' }, 
+    { id: 4, name: "Hujisen", img: "images/players/hujisen.jpg", position: "DEF", row: 2, slotIndex: 1, status: 'starter' }, 
+    { id: 5, name: "Alvaro Carreras", img: "images/players/alvaro_carreras.jpg", position: "DEF", row: 2, slotIndex: 0, status: 'starter' }, 
+    { id: 6, name: "Tchouaméni", img: "images/players/Tchouaméni.jpg", position: "MID", row: 3, slotIndex: 2, status: 'starter' }, 
+    { id: 7, name: "Bellingham", img: "images/players/bellingham.jpg", position: "FWD MID", row: 3, slotIndex: 1, status: 'starter' }, 
+    { id: 8, name: "Valverde", img: "images/players/valverde.jpg", position: "MID DEF", row: 3, slotIndex: 0, status: 'starter' }, 
+    { id: 9, name: "Vini", img: "images/players/vini.jpg", position: "FWD", row: 6, slotIndex: 2, status: 'starter' }, 
+    { id: 10, name: "Mbappe", img: "images/players/mbappe.jpeg", position: "FWD", row: 6, slotIndex: 1, status: 'starter' }, 
+    { id: 11, name: "Mastantouno", img: "images/players/mastantuono.jpg", position: "FWD MID", row: 6, slotIndex: 0, status: 'starter' }, 
+    { id: 12, name: "Lunin", img: "images/players/lunin.jpg", position: "GK", row: 0, slotIndex: -1, status: 'bench' }, 
+    { id: 13, name: "Asencio", img: "images/players/asencio.jpg", position: "DEF", row: 0, slotIndex: -1, status: 'starter' }, 
+    { id: 14, name: "Alaba", img: "images/players/alaba.jpg", position: "DEF", row: 0, slotIndex: -1, status: 'bench' }, 
+    { id: 15, name: "Fran García", img: "images/players/fran.jpg", position: "DEF", row: 0, slotIndex: -1, status: 'bench' }, 
+    { id: 18, name: "Ceballos", img: "images/players/ceballos.jpg", position: "MID", row: 0, slotIndex: -1, status: 'bench' }, 
+    { id: 19, name: "Arda guler", img: "images/players/arda guler.jpg", position: "FWD MID", row: 0, slotIndex: -1, status: 'bench' }, 
+    { id: 20, name: "Camavinga", img: "images/players/camavinga.jpg", position: "MID", row: 0, slotIndex: -1, status: 'bench' }, 
+    { id: 21, name: "Endrick", img: "images/players/endrick.jpg", position: "FWD", row: 0, slotIndex: -1, status: 'bench' }, 
+    { id: 22, name: "Gonzalo", img: "images/players/gonzalo.png", position: "FWD", row: 0, slotIndex: -1, status: 'bench' }, 
+    { id: 23, name: "Brahim", img: "images/players/brahim.jpg", position: "FWD MID", row: 0, slotIndex: -1, status: 'bench' }, 
+    { id: 24, name: "Mendy", img: "images/players/mendy.jpg", position: "DEF", row: 0, slotIndex: -1, status: 'bench' }, 
+    { id: 16, name: "Rudiger", img: "images/players/rudiger.jpg", position: "DEF", row: 0, slotIndex: -1, status: 'injured' }, 
+    { id: 17, name: "Trent", img: "images/players/trent.jpg", position: "MID DEF", row: 0, slotIndex: -1, status: 'bench' }, 
+    { id: 25, name: "Rodrygo", img: "images/players/rodrygo.jpg", position: "FWD", row: 0, slotIndex: -1, status: 'bench' } 
+]; 
+let players = JSON.parse(JSON.stringify(BASE_PLAYERS));
+let draggedPlayerId = null; 
+let currentTouchCard = null; 
+let touchDragClone = null; 
+
+const pitchArea = document.getElementById('pitch-area');
+const benchListContainer = document.getElementById('bench-list-container');
+const injuryListContainer = document.getElementById('injury-list-container');
+const modalOverlay = document.getElementById('modal-overlay');
+const newPlayerForm = document.getElementById('new-player-form');
+
+// --- UTILITY FUNCTIONS ---
+
+function getPositionGroup(position) {
+    return POSITION_GROUPS[position] || POSITION_GROUPS["Other"];
+}
+
+function getPlaceholderImage(position) { 
+    switch (position) { 
+        case 'GK': return 'https://placehold.co/80x80/FFD700/000000?text=GK'; 
+        case 'DEF': case 'MID DEF': return 'https://placehold.co/80x80/1e3a8a/FFFFFF?text=DEF'; 
+        case 'MID': return 'https://placehold.co/80x80/58a6ff/000000?text=MID'; 
+        case 'FWD MID': return 'https://placehold.co/80x80/58a6ff/000000?text=AM'; 
+        case 'FWD': return 'https://placehold.co/80x80/DDDDDD/FFFFFF?text=FWD'; 
+        default: return 'https://placehold.co/80x80/CCCCCC/000000?text=P'; 
+    } 
+}
+
+/**
+ * Checks if a player's position is compatible with a required pitch position group.
+ * @param {string} playerPos The player's specific position (e.g., 'MID DEF').
+ * @param {string} requiredPos The general position group required by the pitch row (e.g., 'DEF', 'MID', 'FWD', 'GK').
+ * @param {string} formationName **NEW** The name of the current formation (e.g., '3-4-3').
+ * @returns {boolean} True if the player can play the position.
+ */
+function isCompatiblePosition(playerPos, requiredPos, formationName) {
+    if (requiredPos === 'GK') return playerPos === 'GK';
+    
+    // Split the player's position (e.g., 'MID DEF' -> ['MID', 'DEF'])
+    const playerPositions = playerPos.split(' ');
+    
+    // **NEW LOGIC: Allow DEF to MID only in 3-back/5-back systems (Wingback roles)**
+    const threeBackFormations = ["3-4-3", "3-5-2", "5-3-2"];
+    const isThreeBack = threeBackFormations.includes(formationName);
+
+    switch (requiredPos) {
+        case 'DEF': // Row 2 (Defense)
+            // Accept DEF or MID DEF
+            return playerPositions.includes('DEF') || playerPos === 'MID DEF'; 
+            
+        case 'MID': // Row 3, 4 (Midfield)
+            // 1. Standard MID acceptance: MID, MID DEF, FWD MID
+            let standardMidAcceptance = playerPositions.includes('MID') || playerPos === 'MID DEF' || playerPos === 'FWD MID';
+
+            if (isThreeBack && playerPositions.includes('DEF')) {
+                // 2. Override for 3-back systems: If it's a 3/5-back formation AND the player is a DEF, allow it (Wingback).
+                return true;
+            }
+            
+            return standardMidAcceptance; // Otherwise, stick to standard rules
+
+        case 'FWD MID': // Row 5 (Attacking Mid/Winger)
+            // Accept FWD MID, MID, FWD
+            return playerPos === 'FWD MID' || playerPositions.includes('MID') || playerPositions.includes('FWD');
+        case 'FWD': // Row 6 (Forward/Striker)
+            // Accept FWD or FWD MID
+            return playerPositions.includes('FWD') || playerPos === 'FWD MID';
+        default:
+            return false;
+    }
+}
+
+/**
+ * Finds the first available player from the bench or injury list that matches the required position.
+ * Prioritizes bench over injured players. Excludes players already in the Set.
+ * @param {string} requiredPos The general position group required by the pitch row.
+ * @param {Set<number>} usedIds A set of player IDs already assigned as starters in this render cycle.
+ * @param {string} formationName **NEW** The name of the current formation.
+ * @returns {Object|null} The player object found, or null.
+ */
+function findSuitableSubstitute(requiredPos, usedIds, formationName) {
+    // 1. Prioritize Bench players (status='bench')
+    const benchPlayer = players.find(p => 
+        (p.status === 'bench') && 
+        !usedIds.has(p.id) &&
+        isCompatiblePosition(p.position, requiredPos, formationName) // **שינוי:** העברת formationName
+    );
+    if (benchPlayer) {
+        return benchPlayer;
+    }
+
+    // 2. Use Injured players only if no bench player is available (status='injured')
+    const injuredPlayer = players.find(p => 
+        (p.status === 'injured') && 
+        !usedIds.has(p.id) &&
+        isCompatiblePosition(p.position, requiredPos, formationName) // **שינוי:** העברת formationName
+    );
+    if (injuredPlayer) {
+        return injuredPlayer;
+    }
+
+    return null;
+}
+
+// --- RENDER FUNCTIONS ---
+
+function createPlayerCard(player, isPitchCard = true) {
+    const card = document.createElement('div');
+    card.className = isPitchCard ? 'player-card' : 'player-list-item-content';
+    card.setAttribute('draggable', true);
+    card.setAttribute('data-id', player.id);
+    
+    // Attach D&D events (for mouse)
+    card.addEventListener('dragstart', handleDragStart);
+    
+    // Attach Touch events (for mobile D&D)
+    card.addEventListener('touchstart', handleTouchStart);
+    
+    if (!isPitchCard && player.status === 'injured') {
+        card.classList.add('injured');
+    }
+
+    const img = document.createElement('img');
+    img.src = player.img || getPlaceholderImage(player.position);
+    img.alt = player.name;
+    img.onerror = () => { img.src = getPlaceholderImage(player.position); }; // Fallback image
+
+    const details = document.createElement('span');
+    details.textContent = player.name;
+
+    card.appendChild(img);
+    
+    // Add the delete button *before* the name to keep the name at the bottom in the new flex layout
+    if (!isPitchCard) {
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'delete-btn';
+        deleteBtn.textContent = 'X';
+        deleteBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            deletePlayer(player.id);
+        });
+        card.appendChild(deleteBtn);
+    }
+    
+    card.appendChild(details);
+    
+    return card;
+}
+
+// **שינוי: הפונקציה מקבלת פרמטר שמאפשר הפעלת אנימציה**
+function renderPitch(animateIn = false) {
+    // 1. Clear all rows
+    for (let i = 1; i <= 6; i++) {
+        const row = document.getElementById(`row-${i}`);
+        if (row) row.innerHTML = '';
+    }
+
+    const starters = players.filter(p => p.status === 'starter');
+    const usedSubstitutes = new Set(starters.map(p => p.id)); // Track players already in the lineup
+
+    // 2. Iterate through rows based on the formation keys
+    Object.keys(currentFormation).forEach(rowKeyStr => {
+        const rowKey = parseInt(rowKeyStr);
+        const row = document.getElementById(`row-${rowKey}`);
+        const numSlots = currentFormation[rowKey]; 
+        const requiredPos = ROW_TO_POSITION[rowKey];
+
+        if (row) {
+            row.style.display = 'flex'; // Ensure the row is visible if it has slots
+
+            // 3. Create slots for the current formation
+            for (let i = 0; i < numSlots; i++) {
+                let playerInSlot = starters.find(p => p.row === rowKey && p.slotIndex === i);
+
+                // --- AUTO-FILL LOGIC ---
+                if (!playerInSlot) {
+                    const substitute = findSuitableSubstitute(requiredPos, usedSubstitutes, currentFormationName); // **שינוי:** העברת formationName
+                    
+                    if (substitute) {
+                        // 4. Update substitute state and place in slot
+                        substitute.status = 'starter';
+                        substitute.row = rowKey;
+                        substitute.slotIndex = i;
+                        playerInSlot = substitute;
+                        usedSubstitutes.add(substitute.id); // Mark as used
+                    }
+                }
+                // --- END AUTO-FILL LOGIC ---
+
+                const slot = document.createElement('div');
+                slot.className = 'player-row-slot';
+                slot.setAttribute('data-row', rowKey);
+                slot.setAttribute('data-slotindex', i);
+                
+                // Add Drop/DragOver events
+                slot.addEventListener('dragover', handleDragOver);
+                slot.addEventListener('dragenter', handleDragEnter);
+                slot.addEventListener('dragleave', handleDragLeave);
+                slot.addEventListener('drop', handleDrop);
+                
+                if (playerInSlot) {
+                    slot.classList.remove('empty-slot');
+                    const card = createPlayerCard(playerInSlot);
+                    slot.appendChild(card);
+                    
+                    // **שינוי: הפעלת אנימציה אם הפונקציה נקראה עם animateIn=true**
+                    if (animateIn) {
+                         card.classList.add('animate-in');
+                    }
+                } else {
+                    slot.classList.add('empty-slot');
+                    // Render an empty card placeholder
+                    slot.innerHTML = `<div class="player-card empty-slot-content" style="width: 100%; height: 100%;">עמדה פנויה (${requiredPos})</div>`;
+                }
+                
+                row.appendChild(slot);
+            }
+        }
+    });
+
+    // 5. Hide unused rows
+    for (let i = 1; i <= 6; i++) {
+        const row = document.getElementById(`row-${i}`);
+        if (row && currentFormation[i] === undefined) {
+             row.style.display = 'none';
+        }
+    }
+    
+    // 6. Ensure all players that are marked as starters but weren't placed on the pitch are moved to bench
+    // This happens if a player who was auto-filled doesn't fit the current formation/slot count after drag/drop.
+    players.forEach(p => {
+        if (p.status === 'starter' && !usedSubstitutes.has(p.id)) {
+            p.status = 'bench'; // Move extra starters back to bench
+            delete p.row;
+            delete p.slotIndex;
+        }
+    });
+
+    // 7. Render bench/injury lists based on the final player status
+    renderBenchAndInjuryLists();
+}
+
+function renderBenchAndInjuryLists() {
+    benchListContainer.innerHTML = '';
+    injuryListContainer.innerHTML = '';
+    
+    const benchPlayers = players.filter(p => p.status === 'bench').sort((a, b) => a.name.localeCompare(b.name, 'he'));
+    const injuredPlayers = players.filter(p => p.status === 'injured').sort((a, b) => a.name.localeCompare(b.name, 'he'));
+
+    // --- RENDER INJURY LIST ---
+    // Now directly appending the card DIVs to the injury-list-container DIV.
+    injuredPlayers.forEach(player => {
+        const card = createPlayerCard(player, false);
+        injuryListContainer.appendChild(card);
+    });
+
+    // Update injury header count
+    const injuryHeader = document.querySelector('.injury-list-wrapper h2');
+    if (injuryHeader) {
+        injuryHeader.textContent = `פצועים / מושעים (${injuredPlayers.length})`;
+    }
+    
+    // --- RENDER BENCH LIST (Horizontal Flow, Fixed) ---
+    // The bench list container is a DIV with display: flex; and flex-wrap: wrap; in CSS.
+    // We append the player cards directly to this DIV for the correct horizontal flow.
+    benchPlayers.forEach(player => {
+        const card = createPlayerCard(player, false);
+        benchListContainer.appendChild(card);
+    });
+
+    // Update bench header text (original list header)
+    const benchHeader = document.querySelector('.bench-list-wrapper h2');
+    if (benchHeader) {
+        benchHeader.textContent = `ספסל ושחקנים זמינים`;
+    }
+}
+
+
+/**
+ * Ensures all previous starters that don't fit the new formation are moved to the bench.
+ * This function should run before renderPitch when changing formations.
+ */
+function clearPitchPositions(newFormation) {
+    const rowsInNewFormation = Object.keys(newFormation).map(Number);
+
+    players.forEach(player => {
+        if (player.status === 'starter') {
+            const row = player.row;
+            const slotIndex = player.slotIndex;
+            const numSlotsInNewRow = newFormation[row] || 0;
+            
+            // 1. Player is in a row that doesn't exist in the new formation OR the slot index is out of bounds
+            if (!rowsInNewFormation.includes(row) || slotIndex >= numSlotsInNewRow) {
+                player.status = 'bench';
+                delete player.row;
+                delete player.slotIndex;
+            } 
+        }
+    });
+}
+
+// **שינוי: הוספת אנימציה במעבר הרכב**
+function changeFormation(newFormationName) {
+    const newFormation = FORMATIONS[newFormationName];
+    if (!newFormation) return;
+
+    // 1. Remove active class from all buttons
+    document.querySelectorAll('.formation-control button').forEach(btn => btn.classList.remove('active'));
+    // 2. Add active class to the selected button
+    document.querySelector(`button[data-formation="${newFormationName}"]`).classList.add('active');
+
+    // **3. Fade out existing players for smooth transition**
+    const existingCards = document.querySelectorAll('.pitch-container .player-card:not(.empty-slot-content)');
+    
+    // אם יש שחקנים במגרש, אפשר לדהות. אם לא, אין צורך בעיכוב.
+    const delay = existingCards.length > 0 ? 200 : 0; 
+
+    existingCards.forEach(card => {
+        card.classList.add('fade-out');
+        card.classList.remove('animate-in'); // ודא שאין אנימציה קודמת רצה
+    });
+
+    setTimeout(() => {
+        // 4. Update data model
+        currentFormationName = newFormationName; // **שינוי:** עדכון שם המערך הנוכחי
+        currentFormation = newFormation;
+        clearPitchPositions(currentFormation); // Move mispositioned players to the bench
+
+        // 5. Render the pitch with the fade-in animation (true)
+        renderPitch(true); 
+        
+        // 6. Clean up animation classes after the new animation finishes (0.65s duration)
+         setTimeout(() => {
+             // נקה את כל מחלקות האנימציה שייתכן שנותרו
+             document.querySelectorAll('.player-card').forEach(card => card.classList.remove('animate-in', 'fade-out'));
+         }, 700);
+
+    }, delay);
+}
+
+
+// --- D&D HANDLERS (Corrected) ---
+
+function handleDragStart(event) {
+    const card = event.target.closest('.player-card, .player-list-item-content');
+    if (!card) return;
+
+    draggedPlayerId = parseInt(card.dataset.id);
+    event.dataTransfer.setData('text/plain', draggedPlayerId);
+    
+    // UPDATED: Use a brief delay to allow the browser to capture the original look before applying 'dragging' style to the original
+    setTimeout(() => card.classList.add('dragging'), 50); 
+}
+
+function handleDragOver(event) {
+    event.preventDefault();
+    const target = event.target.closest('.player-row-slot, #bench-list-container, #injury-list-container');
+    if (!target) return;
+
+    const droppedPlayer = players.find(p => p.id == draggedPlayerId);
+    if (!droppedPlayer) return;
+
+    // Remove drag-over classes first
+    document.querySelectorAll('.drag-over-active, .drag-over-invalid').forEach(el => {
+        el.classList.remove('drag-over-active', 'drag-over-invalid');
+    });
+
+    if (target.classList.contains('player-row-slot')) {
+        const targetRow = parseInt(target.dataset.row);
+        
+        // **שינוי:** בדיקת תאימות מעודכנת עם שם המערך הנוכחי
+        if (isCompatiblePosition(droppedPlayer.position, ROW_TO_POSITION[targetRow], currentFormationName)) {
+             target.classList.add('drag-over-active');
+        } else {
+             target.classList.add('drag-over-invalid');
+        }
+    } else if (target.id === 'bench-list-container' || target.id === 'injury-list-container') {
+         target.classList.add('drag-over-active');
+    }
+}
+
+function handleDragEnter(event) {
+    event.preventDefault(); 
+}
+
+function handleDragLeave(event) {
+    const target = event.target.closest('.player-row-slot, #bench-list-container, #injury-list-container');
+    if (target) {
+        target.classList.remove('drag-over-active', 'drag-over-invalid');
+    }
+}
+
+function handleDragEnd(event) {
+    const draggedCard = document.querySelector(`.player-card[data-id="${draggedPlayerId}"], .player-list-item-content[data-id="${draggedPlayerId}"]`);
+    if (draggedCard) {
+        draggedCard.classList.remove('dragging');
+    }
+    document.querySelectorAll('.drag-over-active, .drag-over-invalid').forEach(el => {
+        el.classList.remove('drag-over-active', 'drag-over-invalid');
+    });
+    draggedPlayerId = null; 
+}
+
+
+// **הפונקציה המרכזית המתוקנת לטיפול בשחרור**
+function handleDrop(event) {
+    event.preventDefault();
+    
+    const target = event.target.closest('.player-row-slot, .player-card, .player-list-item-content, #bench-list-container, #injury-list-container');
+    const transferId = event.dataTransfer ? event.dataTransfer.getData('text/plain') : draggedPlayerId;
+    if (!target || !transferId) return;
+    
+    const droppedPlayerId = parseInt(transferId);
+    const droppedPlayer = players.find(p => p.id === droppedPlayerId);
+    if (!droppedPlayer) return;
+
+    document.querySelectorAll('.drag-over-active, .drag-over-invalid').forEach(el => {
+        el.classList.remove('drag-over-active', 'drag-over-invalid');
+    });
+
+    // תרחיש A: שחרור על משבצת מגרש (ריקה או תפוסה)
+    if (target.closest('.player-row-slot')) {
+        const targetSlotElement = target.closest('.player-row-slot');
+        const targetRow = parseInt(targetSlotElement.dataset.row);
+        const targetSlotIndex = parseInt(targetSlotElement.dataset.slotindex);
+        const targetCard = targetSlotElement.querySelector('.player-card');
+
+        // בדיקת תקינות מיקום הנגרר
+        // **שינוי:** בדיקת תאימות מעודכנת עם שם המערך הנוכחי
+        if (!isCompatiblePosition(droppedPlayer.position, ROW_TO_POSITION[targetRow], currentFormationName)) {
+            alert(`תפקיד לא מתאים! ${droppedPlayer.name} לא יכול לשחק בשורה ${targetRow}.`);
+            return;
+        }
+
+        let targetPlayer = null;
+        if (targetCard && targetCard.dataset.id) {
+             const targetPlayerId = parseInt(targetCard.dataset.id);
+             targetPlayer = players.find(p => p.id === targetPlayerId);
+        }
+
+        // שמירת נתונים מקוריים של הנגרר
+        const droppedData = { 
+            row: droppedPlayer.row, 
+            slotIndex: droppedPlayer.slotIndex, 
+            status: droppedPlayer.status 
+        };
+
+        // A1: החלפה/חילוף
+        if (targetPlayer) {
+            // החלפת נתונים מלאה
+            
+            // 1. הנגרר נכנס למיקום המטרה
+            droppedPlayer.row = targetRow;
+            droppedPlayer.slotIndex = targetSlotIndex;
+            droppedPlayer.status = 'starter';
+            
+            // 2. המטרה יוצא/מחליף מקום
+            if (droppedData.status === 'starter') {
+                // פותח <--> פותח: המטרה עובר למקום הנגרר
+                targetPlayer.row = droppedData.row;
+                targetPlayer.slotIndex = droppedData.slotIndex;
+                targetPlayer.status = 'starter'; 
+            } else {
+                // ספסל/פצוע --> פותח: המטרה יוצא לספסל
+                targetPlayer.row = 0; 
+                targetPlayer.slotIndex = -1; 
+                targetPlayer.status = 'bench'; // יוצא תמיד לספסל במקרה של חילוף
+            }
+
+        } 
+        // A2: משבצת ריקה (הנגרר נכנס להרכב)
+        else {
+            droppedPlayer.row = targetRow;
+            droppedPlayer.slotIndex = targetSlotIndex;
+            droppedPlayer.status = 'starter';
+        }
+    } 
+    // תרחיש B: שחרור על מכל הספסל/פצועים (הורדה מההרכב/שינוי סטטוס)
+    else if (target.closest('#bench-list-container') || target.closest('#injury-list-container')) {
+        const newStatus = target.closest('#bench-list-container') ? 'bench' : 'injured';
+
+        if (droppedPlayer.status === 'starter' || droppedPlayer.status !== newStatus) {
+            droppedPlayer.row = 0;
+            droppedPlayer.slotIndex = -1;
+            droppedPlayer.status = newStatus;
+        } 
+    }
+    
+    // לאחר עדכון הנתונים, יש לרנדר מחדש הכל
+    renderPitch(); 
+}
+
+
+// --- ADD PLAYER FUNCTIONS ---
+
+function showAddPlayerForm(targetStatus) {
+    document.getElementById('targetStatus').value = targetStatus;
+    // איפוס טופס
+    newPlayerForm.reset();
+    document.getElementById('playerName').focus();
+    modalOverlay.style.display = 'block';
+    document.getElementById('add-player-form').classList.add('visible');
+}
+
+function hideAddPlayerForm() {
+    modalOverlay.style.display = 'none';
+    document.getElementById('add-player-form').classList.remove('visible');
+}
+
+function addPlayerImmediately(event) {
+    event.preventDefault();
+    
+    const name = document.getElementById('playerName').value;
+    const position = document.getElementById('playerPos').value;
+    const img = document.getElementById('playerImg').value;
+    const status = document.getElementById('targetStatus').value;
+    
+    const newPlayer = {
+        id: nextPlayerId++,
+        name: name,
+        img: img,
+        position: position,
+        row: 0,
+        slotIndex: -1,
+        status: status
+    };
+    
+    players.push(newPlayer);
+    
+    // רענון הרשימות
+    renderPitch(); // קורא ל-renderBenchAndInjuryLists בפנים
+    
+    hideAddPlayerForm();
+}
+
+function deletePlayer(playerId) {
+    if (confirm("האם אתה בטוח שברצונך למחוק את השחקן הזה?")) {
+        players = players.filter(p => p.id !== playerId);
+        // רנדור מחדש כדי להסיר אותו מכל מקום (מגרש, ספסל, פצועים)
+        renderPitch(); 
+    }
+}
+
+// --- ANIMATION & WIDGETS ---
+
+// **שינוי: הפונקציה משתמשת בלוגיקה דומה למעבר הרכב**
+function runPitchAnimation() {
+    // 1. Fade out all existing players
+    document.querySelectorAll('.pitch-container .player-card:not(.empty-slot-content)').forEach(card => {
+        card.classList.add('fade-out');
+        card.classList.remove('animate-in'); // Ensure no stale animation class
+    });
+     
+    // 2. Rerender with animation after fade-out
+    setTimeout(() => {
+       renderPitch(true); // Force animation
+       
+       // 3. Clean up the animation class after it runs once
+       setTimeout(() => {
+           document.querySelectorAll('.player-card').forEach(card => card.classList.remove('animate-in', 'fade-out'));
+       }, 700);
+       
+    }, 200); // 200ms for fade out
+}
+
+function switchTable(tableId) {
+    // 1. Hide all table contents
+    document.querySelectorAll('.table-content').forEach(content => {
+        content.classList.remove('active');
+        content.classList.add('hidden');
+    });
+
+    // 2. Determine the element ID of the selected table content
+    const activeTable = document.getElementById(`${tableId}-standings-widget`) || document.getElementById(`${tableId}-widget`);
+    
+    if (activeTable) {
+        // 3. Show the selected table content
+        activeTable.classList.remove('hidden');
+        activeTable.classList.add('active');
+        
+        // 4. Update the header title
+        const title = activeTable.dataset.title;
+        document.getElementById('current-table-title').textContent = title;
+        
+        // 5. Update the button visual state
+        document.querySelectorAll('.switch-table-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelector(`.switch-table-btn[data-table-id="${tableId}"]`).classList.add('active');
+    }
+}
+
+
+// --- TOUCH EVENTS FOR MOBILE D&D (Unchanged) ---
+// (Keeping touch logic simplified as in previous snippets)
+
+function createTouchClone(card) {
+    const clone = card.cloneNode(true);
+    clone.classList.add('dragging'); 
+    clone.style.position = 'absolute';
+    clone.style.zIndex = '1000';
+    clone.style.pointerEvents = 'none'; 
+    document.body.appendChild(clone);
+    return clone;
+}
+
+function handleTouchStart(event) {
+    if (event.cancelable) event.preventDefault(); 
+    
+    const card = event.target.closest('.player-card, .player-list-item-content');
+    if (!card) return;
+
+    const touch = event.touches[0];
+    draggedPlayerId = parseInt(card.dataset.id);
+    currentTouchCard = card;
+    
+    touchDragClone = createTouchClone(card);
+    
+    const rect = card.getBoundingClientRect();
+    touchDragClone.style.left = `${rect.left}px`;
+    touchDragClone.style.top = `${rect.top}px`;
+    
+    card.classList.add('dragging');
+}
+
+function handleTouchMove(e) {
+    if (!currentTouchCard || !touchDragClone) return;
+
+    e.preventDefault(); // ⬅️ קריטי: מונע גלילה רגילה של הדף
+
+    const touch = e.touches[0];
+    const clientX = touch.clientX;
+    const clientY = touch.clientY;
+    
+    // מיקום שיבוט הגרירה
+    touchDragClone.style.top = `${clientY - touchDragClone.offsetHeight / 2}px`;
+    touchDragClone.style.left = `${clientX - touchDragClone.offsetWidth / 2}px`;
+
+    // --- לוגיקת גלילה אוטומטית (SCROLLING EDGE DETECTION) ---
+    const SCROLL_AREA = 100; // מרחק בפיקסלים מהקצה שיתחיל גלילה
+    const SCROLL_SPEED = 15; // מהירות הגלילה בפיקסלים
+
+    // גלילה למטה (השחקן קרוב לקצה התחתון של המסך)
+    if (clientY > window.innerHeight - SCROLL_AREA) {
+        window.scrollBy(0, SCROLL_SPEED);
+    } 
+    // גלילה למעלה (השחקן קרוב לקצה העליון של המסך)
+    else if (clientY < SCROLL_AREA) {
+        window.scrollBy(0, -SCROLL_SPEED);
+    }
+    // --------------------------------------------------------
+
+    // מצא את האלמנט שמתחת לנקודת המגע (כדי לזהות לאן לשחרר)
+    touchDragClone.style.display = 'none'; 
+    const elementUnderTouch = document.elementFromPoint(clientX, clientY);
+    touchDragClone.style.display = 'block'; 
+
+    // Cleanup previous hover effects
+    document.querySelectorAll('.drag-over-active, .drag-over-invalid').forEach(el => {
+        el.classList.remove('drag-over-active', 'drag-over-invalid');
+    });
+
+    // Check the drop target
+    const dropTarget = elementUnderTouch ? elementUnderTouch.closest('.player-row-slot, #injury-list-container, #bench-list-container') : null;
+
+    if (dropTarget) {
+        const droppedPlayer = players.find(p => p.id == draggedPlayerId);
+        const targetRow = dropTarget.dataset.row ? parseInt(dropTarget.dataset.row) : null;
+
+        // **שינוי:** בדיקת תאימות מעודכנת עם שם המערך הנוכחי
+        if (dropTarget.id === 'bench-list-container' || dropTarget.id === 'injury-list-container' || (targetRow && isCompatiblePosition(droppedPlayer.position, ROW_TO_POSITION[targetRow], currentFormationName))) {
+             dropTarget.classList.add('drag-over-active');
+        } else if (targetRow) {
+             dropTarget.classList.add('drag-over-invalid');
+        }
+    }
+}
+function handleTouchEnd(event) {
+    if (!touchDragClone || !draggedPlayerId) return;
+
+    const touch = event.changedTouches[0];
+    touchDragClone.style.display = 'none'; 
+    const elementUnderTouch = document.elementFromPoint(touch.clientX, touch.clientY);
+    touchDragClone.style.display = 'block';
+
+    const target = elementUnderTouch ? elementUnderTouch.closest('.player-row-slot, .player-card, #bench-list-container, #injury-list-container') : null;
+    
+    if (target) {
+        const dropEvent = {
+            preventDefault: () => {},
+            target: target,
+            dataTransfer: {
+                getData: () => draggedPlayerId.toString()
+            }
+        };
+        handleDrop(dropEvent);
+    }
+    
+    if (currentTouchCard) {
+        currentTouchCard.classList.remove('dragging');
+        currentTouchCard = null;
+    }
+    if (touchDragClone) {
+        touchDragClone.remove();
+        touchDragClone = null;
+    }
+    draggedPlayerId = null;
+    
+    document.querySelectorAll('.drag-over-active, .drag-over-invalid').forEach(el => {
+        el.classList.remove('drag-over-active', 'drag-over-invalid');
+    });
+}
+
+
+// --- INITIALIZATION ---
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Fill slots upon initial load and render the default formation (4-3-3)
+    // The auto-fill logic in renderPitch ensures the pitch is full on load
+    changeFormation('4-3-3'); 
+    
+    // Ensure the correct table is visible on load and buttons are initialized correctly
+    switchTable('team');
+
+    document.getElementById('formation-control-buttons').addEventListener('click', (e) => {
+        const button = e.target.closest('button[data-formation]');
+        if (button) {
+            changeFormation(button.dataset.formation); 
+        }
+    });
+
+    document.getElementById('re-run-animation').addEventListener('click', runPitchAnimation);
+    
+    // Add player form listeners
+    newPlayerForm.addEventListener('submit', addPlayerImmediately);
+    document.getElementById('cancel-add-player-btn').addEventListener('click', hideAddPlayerForm);
+    document.getElementById('add-injured-btn').addEventListener('click', () => showAddPlayerForm('injured'));
+    document.getElementById('add-bench-btn').addEventListener('click', () => showAddPlayerForm('bench'));
+    
+    // Listener for table switch buttons
+    document.getElementById('table-switch-buttons').addEventListener('click', (e) => {
+        const button = e.target.closest('.switch-table-btn');
+        if (button) {
+            switchTable(button.dataset.tableId); 
+        }
+    });
+    
+    // GLOBAL Drag End Listener for cleanup regardless of where the drop happens
+    document.addEventListener('dragend', handleDragEnd);
+    document.addEventListener('touchend', handleTouchEnd);
+    document.addEventListener('touchmove', handleTouchMove, { passive: false });
+});
+</script>
+
+</body>
+</html>
